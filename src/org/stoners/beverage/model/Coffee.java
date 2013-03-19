@@ -41,10 +41,13 @@ public class Coffee extends Beverage {
 			sugarStr = "with " + sugarPacketCount + " packet(s) of sugar";
 		}
 		String caffeineStr = caffeinated ? "" : "decaf";
-		String espressoStr = containsEspresso ? "and " + espressoShotCount + "shots of espresso" : "";
+		String espressoStr = containsEspresso ? "and " + espressoShotCount + " shots of espresso" : "";
+		String foamyStr = foamy ? "foamy" : "";
+		String whippedStr = whipped ? "whipped" : "";
+		String creamerStr = creamerInfo.getAmountInML() > 0 ? creamerInfo.getAmountInML() + "mL of " + creamerInfo.getType().toString() : "";
 		
 		// discards "" strings by default
-		return StringHelper.commaDelimit(coffeeStr, caffeineStr, roastStr, sugarStr, espressoStr);
+		return StringHelper.commaDelimit(coffeeStr, caffeineStr, roastStr, foamyStr, whippedStr, sugarStr, creamerStr, espressoStr);
 	}
 
 	public boolean isCaffeinated() {
