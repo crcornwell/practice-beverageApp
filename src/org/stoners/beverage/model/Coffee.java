@@ -40,9 +40,11 @@ public class Coffee extends Beverage {
 		if (sugarPacketCount > 0) {
 			sugarStr = "with " + sugarPacketCount + " packet(s) of sugar";
 		}
-
+		String caffeineStr = caffeinated ? "" : "decaf";
+		String espressoStr = containsEspresso ? "and " + espressoShotCount + "shots of espresso" : "";
+		
 		// discards "" strings by default
-		return StringHelper.commaDelimit(coffeeStr, roastStr, sugarStr);
+		return StringHelper.commaDelimit(coffeeStr, caffeineStr, roastStr, sugarStr, espressoStr);
 	}
 
 	public boolean isCaffeinated() {
