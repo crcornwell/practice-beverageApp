@@ -57,7 +57,7 @@ public class Coffee extends Beverage {
 	public void setCaffeinated(boolean caffeinated) {
 		this.caffeinated = caffeinated;
 	}
-
+	
 	public int getEspressoShotCount() {
 		return espressoShotCount;
 	}
@@ -97,6 +97,10 @@ public class Coffee extends Beverage {
 	public void setFoamy(boolean foamy) {
 		this.foamy = foamy;
 	}
+	
+	public boolean getAvailableFoamy() {
+		return false;
+	}
 
 	public boolean isWhipped() {
 		return whipped;
@@ -104,6 +108,10 @@ public class Coffee extends Beverage {
 
 	public void setWhipped(boolean whipped) {
 		this.whipped = whipped;
+	}
+	
+	public boolean getAvailableWhipped() {
+		return true;
 	}
 
 	public boolean hasEspresso() {
@@ -120,5 +128,10 @@ public class Coffee extends Beverage {
 
 	public void setRoastLevel(RoastLevel roastLevel) {
 		this.roastLevel = roastLevel;
+	}
+	
+	public List<RoastLevel> getAvailableRoastLevel() {
+		List<RoastLevel> roasts = new ArrayList<>(Arrays.asList(RoastLevel.values());
+		return roasts;
 	}
 }
