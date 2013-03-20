@@ -1,5 +1,9 @@
 package org.stoners.beverage.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.stoners.beverage.util.StringHelper;
 
 public class Coffee extends Beverage {
@@ -49,7 +53,7 @@ public class Coffee extends Beverage {
 		// discards "" strings by default
 		return StringHelper.commaDelimit(coffeeStr, caffeineStr, roastStr, foamyStr, whippedStr, sugarStr, creamerStr, espressoStr);
 	}
-
+	
 	public boolean isCaffeinated() {
 		return caffeinated;
 	}
@@ -130,8 +134,8 @@ public class Coffee extends Beverage {
 		this.roastLevel = roastLevel;
 	}
 	
-	public List<RoastLevel> getAvailableRoastLevel() {
-		List<RoastLevel> roasts = new ArrayList<>(Arrays.asList(RoastLevel.values());
+	public List<RoastLevel> getAvailableRoastLevels() {
+		List<RoastLevel> roasts = new ArrayList<>(Arrays.asList(RoastLevel.values()));
 		return roasts;
 	}
 }
