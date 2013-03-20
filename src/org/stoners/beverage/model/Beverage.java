@@ -1,5 +1,9 @@
 package org.stoners.beverage.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Beverage extends Product {
 
 	Size size = Size.UNSPECIFIED;
