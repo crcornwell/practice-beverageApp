@@ -11,7 +11,7 @@ public class Beverage extends Product {
 		this.size = (size != null ? size : Size.UNSPECIFIED);
 	}
 	public List<Size> getAvailableSizes() {
-		List<Size> sizes = new ArrayList<>(Arrays.asList(Size.values));
+		List<Size> sizes = new ArrayList<>(Arrays.asList(Size.values()));
 		return sizes;
 	}
 }
