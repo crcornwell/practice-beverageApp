@@ -29,6 +29,8 @@ public class Coffee extends Beverage {
 
 	public Coffee(CoffeeType type) {
 		this.type = type;
+		this.creamerInfo = new CreamerInfo();
+		this.roastLevel = RoastLevel.UNSPECIFIED;
 	}
 
 	// simple example of overriding an inherited method.  all objects inherit toString() from Object,
@@ -84,6 +86,11 @@ public class Coffee extends Beverage {
 
 	public void setCreamerInfo(CreamerInfo creamerInfo) {
 		this.creamerInfo = creamerInfo != null ? creamerInfo : new CreamerInfo();
+	}
+	
+	public List<CreamerType> getAvailableCreamer() {
+		List<CreamerType> creamerTypes = new ArrayList<>(Arrays.asList(CreamerType.values()));
+		return creamerTypes;
 	}
 
 	public CoffeeType getType() {

@@ -19,7 +19,7 @@ public class MenuPrinter {
 	// in place of T in List<T>
 	public void printMenu(String prompt, List<? extends Object> choices) {
 		for (int i = 0; i < choices.size(); i++) {
-			out.printf("%d. %s\n", i + 1, choices.get(i).toString());
+			out.printf("%d. %s\n", i + 1, choices.get(i).toString().replaceAll("_", " "));
 		}
 		out.print(prompt + ": ");
 	}
