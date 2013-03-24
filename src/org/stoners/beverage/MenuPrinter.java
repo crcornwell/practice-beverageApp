@@ -29,13 +29,13 @@ public class MenuPrinter {
 		try {
 			userInputStr = inputReader.readLine();
 		} catch (IOException e) {
-		userInputStr = "";
+			userInputStr = "";
 		}
 		int userInput;
 		try {
-		userInput = Integer.parseInt(userInputStr);
+			userInput = Integer.parseInt(userInputStr);
 		} catch(NumberFormatException e) {
-		userInput = 0;
+			userInput = 0;
 		}
 		return userInput;
 	}
@@ -45,8 +45,16 @@ public class MenuPrinter {
 	}
 	
 	public <T> handleSelection(String prompt, List<? extends Object> choices) {
-		printMenu(prompt, choices);
-		int userInput = readInt();
-		return choices.get(userInput-1);
+		boolean exitSwitch;
+		while(!exitSwtich) {
+			printMenu(prompt, choices);
+			int userInput = readInt();
+			if (userInput>0 && userInput<=choices.size()) {
+				exitSwitch = true;
+				return choices.get(userInput-1);
+			}
+			else
+				out.printf("\n%s\n\n", "You've made an invalid selection, please try again");
+		}
 	}
 }
