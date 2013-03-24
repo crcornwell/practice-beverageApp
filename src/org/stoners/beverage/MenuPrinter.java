@@ -40,11 +40,11 @@ public class MenuPrinter {
 		return userInput;
 	}
 	
-	public Object handleSelection(List<? extends Object> choices) {
+	public <T> handleSelection(List<? extends Object> choices) {
 		handleSelection("Make a selection", choices);
 	}
 	
-	public Object handleSelection(String prompt, List<? extends Object> choices) {
+	public <T> handleSelection(String prompt, List<? extends Object> choices) {
 		printMenu(prompt, choices);
 		int userInput = readInt();
 		return choices.get(userInput-1);
