@@ -23,4 +23,30 @@ public class MenuPrinter {
 		}
 		out.print(prompt + ": ");
 	}
+	
+	private int readInt() {
+		String userInputStr;
+		try {
+			userInputStr = inputReader.readLine();
+		} catch (IOException e) {
+		userInputStr = "";
+		}
+		int userInput;
+		try {
+		userInput = Integer.parseInt(userInputStr);
+		} catch(NumberFormatException e) {
+		userInput = 0;
+		}
+		return userInput;
+	}
+	
+	public Object handleSelection(List<? extends Object> choices) {
+		handleSelection("Make a selection", choices);
+	}
+	
+	public Object handleSelection(String prompt, List<? extends Object> choices) {
+		printMenu(prompt, choices);
+		int userInput = readInt();
+		return choices.get(userInput-1);
+	}
 }
