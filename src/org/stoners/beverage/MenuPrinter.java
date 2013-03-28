@@ -1,7 +1,10 @@
 package org.stoners.beverage;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.List;
+import java.io.BufferedReader;
 
 /**
  * 
@@ -26,6 +29,8 @@ public class MenuPrinter {
 	
 	private int readInt() {
 		String userInputStr;
+		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+		
 		try {
 			userInputStr = inputReader.readLine();
 		} catch (IOException e) {
@@ -40,21 +45,22 @@ public class MenuPrinter {
 		return userInput;
 	}
 	
-	public <T> handleSelection(List<? extends Object> choices) {
-		handleSelection("Make a selection", choices);
+	public <T> Object handleSelection(List<? extends Object> choices) {
+		return handleSelection("Make a selection", choices);
 	}
 	
-	public <T> handleSelection(String prompt, List<? extends Object> choices) {
-		boolean exitSwitch;
-		while(!exitSwtich) {
+	public <T> Object handleSelection(String prompt, List<? extends Object> choices) {
+		boolean exitSwitch=false;
+		int userInput=0;
+		while(!exitSwitch) {
 			printMenu(prompt, choices);
-			int userInput = readInt();
+			userInput = readInt();
 			if (userInput>0 && userInput<=choices.size()) {
 				exitSwitch = true;
-				return choices.get(userInput-1);
 			}
 			else
 				out.printf("\n%s\n\n", "You've made an invalid selection, please try again");
 		}
+		return choices.get(userInput-1);
 	}
 }

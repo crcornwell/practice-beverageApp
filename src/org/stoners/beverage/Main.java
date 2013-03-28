@@ -1,6 +1,5 @@
 package org.stoners.beverage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,12 +10,10 @@ import org.stoners.beverage.model.Coffee;
 import org.stoners.beverage.model.CoffeeType;
 import org.stoners.beverage.util.Choices;
 import org.stoners.beverage.util.Orders;
-import org.stoners.beverage.util.UserInput;
 
 public class Main {
 	private MenuPrinter menuPrinter = new MenuPrinter(System.out);
 	private Orders orders = new Orders();
-	private UserInput userInput = new UserInput();
 	private PrintStream out = new PrintStream(System.out);
 
 	public static void main(String[] args) {
@@ -41,15 +38,13 @@ public class Main {
 				List<MenuOptions> menuOptions = new ArrayList<>();
 				menuOptions.add(MenuOptions.ADD_AN_ORDER);
 				menuOptions.add(MenuOptions.EXIT);
-				menuPrinter.printMenu("Make your selection", menuOptions);
-				int userInput;
-				userInput = this.userInput.toInt();
+				MenuOptions userInput = (MenuOptions) menuPrinter.handleSelection("Make your selection", menuOptions);
 				switch(userInput) {
-				case 1: 
+				case ADD_AN_ORDER: 
 					orders.addOrder();
 					orders.printOrders();
 					continue;
-				case 2:
+				case EXIT:
 					exitSwitch = true;
 					out.printf("\n%s\n\n", "Thanks for stopping by!");
 					break;
@@ -58,23 +53,21 @@ public class Main {
 				}
 			}
 			else {
-				menuPrinter.printMenu("Make your selection", Arrays.asList(MenuOptions.values()));
-				int userInput;
-				userInput = this.userInput.toInt();
+				MenuOptions userInput = (MenuOptions) menuPrinter.handleSelection("Make your selection", Arrays.asList(MenuOptions.values()));
 				switch(userInput) {
-				case 1: 
+				case ADD_AN_ORDER: 
 					orders.addOrder();
 					orders.printOrders();
 					continue;
-				case 2:
+				case EDIT_AN_ORDER:
 					orders.editOrder();
 					orders.printOrders();
 					continue;
-				case 3:
+				case REMOVE_AN_ORDER:
 					orders.removeOrder();
 					orders.printOrders();
 					continue;
-				case 4:
+				case EXIT:
 					exitSwitch = true;
 					out.printf("\n%s\n\n", "Thanks for stopping by!");
 					break;

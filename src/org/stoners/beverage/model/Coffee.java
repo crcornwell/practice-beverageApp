@@ -32,6 +32,16 @@ public class Coffee extends Beverage {
 		this.creamerInfo = new CreamerInfo();
 		this.roastLevel = RoastLevel.UNSPECIFIED;
 	}
+	
+	public static <T> Coffee newInstance(CoffeeType type) {
+		switch (type) {
+		case MOCHA: return new Mocha();
+		case SUMATRA: return new Sumatra();
+		case CAPPUCINO: return new Cappucino();
+		case LATTE: return new Latte();
+		default: return new Coffee(type);
+		}
+	}
 
 	// simple example of overriding an inherited method.  all objects inherit toString() from Object,
 	// which all classes implicitly extend, directly or ultimately.
@@ -90,6 +100,7 @@ public class Coffee extends Beverage {
 	
 	public List<CreamerType> getAvailableCreamer() {
 		List<CreamerType> creamerTypes = new ArrayList<>(Arrays.asList(CreamerType.values()));
+		creamerTypes.remove(CreamerType.UNSPECIFIED);
 		return creamerTypes;
 	}
 
@@ -143,6 +154,7 @@ public class Coffee extends Beverage {
 	
 	public List<RoastLevel> getAvailableRoastLevels() {
 		List<RoastLevel> roasts = new ArrayList<>(Arrays.asList(RoastLevel.values()));
+		roasts.remove(RoastLevel.UNSPECIFIED);
 		return roasts;
 	}
 }
