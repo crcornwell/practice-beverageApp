@@ -19,11 +19,14 @@ public class Orders {
 		List<CoffeeType> coffeeType = new ArrayList<>(Arrays.asList(CoffeeType.values()));
 		coffeeType.remove(CoffeeType.UNSPECIFIED);
 		out.printf("\n%s\n\n", "What type of coffee would you like?");
-		CoffeeType userInput = (CoffeeType) menuPrinter.handleSelection("Make your selection", coffeeType);
+		CoffeeType userInput = (CoffeeType) menuPrinter.handleSelection(coffeeType);
 		Coffee coffee = Coffee.newInstance(userInput);
 		out.printf("\n%s\n\n", "What kind of roast do you prefer?");
 		RoastLevel userRoast = (RoastLevel) menuPrinter.handleSelection(coffee.getAvailableRoastLevels());
 		coffee.setRoastLevel(userRoast);
+		out.printf("\n%s\n\n", "Would you like it caffeinated?");
+		boolean isCaffeinated = menuPrinter.handleBoolean(Arrays.asList(Booleans.values()));
+		coffee.setCaffeinated(isCaffeinated);
 		orderList.add(coffee);
 	}
 	

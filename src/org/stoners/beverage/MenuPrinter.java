@@ -63,4 +63,12 @@ public class MenuPrinter {
 		}
 		return choices.get(userInput-1);
 	}
+	
+	public boolean handleBoolean(List<? extends Object> choices) {
+		Booleans yesNo = (Booleans) handleSelection(choices);
+		switch (yesNo) {
+		case YES : return true;
+		default : return false;
+		}
+	}
 }
